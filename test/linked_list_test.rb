@@ -1,34 +1,38 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/linked_list'
+require 'pry'
 
-def setup
-  @list = LinkedList.new
-end
+class LinkedListTest < Minitest::Test
 
-def test_it_exists
-  assert_instance_of LinkedList, @list
-end
+  def setup
+    @list = LinkedList.new
+  end
 
-def test_attributes
-  assert_nil @list.head
-end
+  def test_it_exists
+    assert_instance_of LinkedList, @list
+  end
 
-def test_append
-  @list.append("doop")
+  def test_attributes
+    assert_nil @list.head
+  end
 
-  assert "doop", @list.head
-  assert_nil list.head.next_node
-end
+  def test_append
+    @list.append("doop")
 
-def test_count
-  @list.append("doop")
+    assert "doop", @list.head
+    assert_nil @list.head.next_node
+  end
 
-  assert 1, @list.count
-end
+  def test_count
+    @list.append("doop")
 
-def test_to_string
-  @list.append("doop")
+    assert 1, @list.count
+  end
 
-  assert "doop", @list.to_string
+  def test_to_string
+    @list.append("doop")
+
+    assert "doop", @list.to_string
+  end
 end
