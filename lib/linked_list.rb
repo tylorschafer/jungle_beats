@@ -14,7 +14,11 @@ class LinkedList
   end
 
   def append(sound)
-    @list_contents << Node.new(sound)
+    if @list_contents.empty? || @list_contents.count.odd?
+      @list_contents << Node.new(sound)
+    else
+      @list_contents.last.next_node << Node.new(sound)
+    end
   end
 
   def count
