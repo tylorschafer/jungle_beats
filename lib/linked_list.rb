@@ -9,6 +9,16 @@ class LinkedList
     @head = nil
   end
 
+  def prepend(sound)
+    new_node = Node.new(sound)
+    if @head.nil?
+      @head = new_node
+    else
+      new_node.next_node = @head
+      @head = new_node
+    end
+  end
+
   def append(sound)
     new_node = Node.new(sound)
     if @head.nil?
