@@ -3,39 +3,54 @@ require 'pry'
 
 class LinkedList
 
-  attr_reader :contents
+  attr_accessor :head
 
   def initialize
-    @contents = []
+    @head = nil
   end
 
-  def head
-    @contents[0]
+  def forward(current_node)
+    current_node.next_node
+  end
+
+  def place_open_slot(new_node)
+    current = @head
+    until forward(current).nil?
+      current = forward(current)
+    end
+    current.next_node = new_node
   end
 
   def append(sound)
-    if @contents.empty?
-      @contents << Node.new(sound)
+    new_node = Node.new(sound)
+    if @head.nil?
+      @head = new_node
     else
-      @contents.last.next << Node.new(sound)
+      place_open_slot(new_node)
     end
+  end
+
+  def analyze(type)
+    analyzation = type
+    current = @head
+    until current.nil?
+      if type.is_a?(Integer) ?
+        analyzation += 1 :
+        analyzation << "#{current.data} "
+      end
+      current = forward(current)
+    end
+    analyzation
   end
 
   def count
-    count = 0
-    @contents.each do |node|
-      count += 1
-    end
-    count
+    analyze(0)
   end
 
   def to_string
-    @contents.map do |node|
-      node.data.to_s
-    end.join(" ")
+    analyze(String.new)
   end
 
   def insert(place, sound)
-    @contents.insert()
   end
 end

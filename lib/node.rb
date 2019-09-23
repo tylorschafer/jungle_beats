@@ -1,16 +1,8 @@
 class Node
-  attr_reader :next, :data
+  attr_accessor :next_node, :data
 
   def initialize(data)
     @data = data
-    @next = []
-  end
-
-  def next_node
-    if @next == []
-      nil
-    else
-      @next
-    end
+    @next_node = nil
   end
 end

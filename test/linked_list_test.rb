@@ -13,7 +13,7 @@ class LinkedListTest < Minitest::Test
     assert_instance_of LinkedList, @list
   end
 
-  def test_head
+  def test_attributes
     assert_nil @list.head
 
     @list.append("doop")
@@ -49,10 +49,22 @@ class LinkedListTest < Minitest::Test
 
     @list.append("deep")
 
-    assert "doop deep", @list.to_string
+    assert_equal "doop deep ", @list.to_string
 
     @list.append("beep")
 
-    assert "doop deep beep", @list.to_string
+    assert_equal "doop deep beep ", @list.to_string
+  end
+
+  def test_insert
+    skip
+    @list.append("doop")
+    @list.append("deep")
+    @list.append("bop")
+    @list.append("bleep")
+    binding.pry
+    @list.insert(1, "blat")
+
+    assert "doop blat deep", @list.to_string
   end
 end
