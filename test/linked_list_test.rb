@@ -64,4 +64,13 @@ class LinkedListTest < Minitest::Test
 
     assert_equal "doop blat deep bop bleep ", @list.to_string
   end
+
+  def test_prepend
+    @list.append("doop")
+    @list.append("deep")
+    @list.append("bop")
+    @list.prepend("bleep")
+
+    assert_equal "bleep doop deep bop ", @list.to_string
+  end
 end

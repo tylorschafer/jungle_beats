@@ -9,8 +9,13 @@ class LinkedList
     @head = nil
   end
 
-  def forward(current_node)
-    current_node.next_node
+  def append(sound)
+    new_node = Node.new(sound)
+    if @head.nil?
+      @head = new_node
+    else
+      place_open_slot(new_node)
+    end
   end
 
   def place_open_slot(new_node)
@@ -18,10 +23,14 @@ class LinkedList
     until forward(current).nil?
       current = forward(current)
     end
-    current.next_node = new_node
+    place_node(current, new_node)
   end
 
-  def place_node
+  def forward(current_node)
+    current_node.next_node
+  end
+
+  def place_node(current, new_node)
     current.next_node = new_node
   end
 
@@ -32,16 +41,7 @@ class LinkedList
       forward(current)
     end
     new_node.next_node = forward(current)
-    current.next_node = new_node
-  end
-
-  def append(sound)
-    new_node = Node.new(sound)
-    if @head.nil?
-      @head = new_node
-    else
-      place_open_slot(new_node)
-    end
+    place_node(current, new_node)
   end
 
   def analyze(type)
