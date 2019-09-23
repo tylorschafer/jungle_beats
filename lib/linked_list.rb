@@ -21,6 +21,20 @@ class LinkedList
     current.next_node = new_node
   end
 
+  def place_node
+    current.next_node = new_node
+  end
+
+  def insert(placement, sound)
+    new_node = Node.new(sound)
+    current = @head
+    placement.times do |time|
+      forward(current)
+    end
+    new_node.next_node = forward(current)
+    current.next_node = new_node
+  end
+
   def append(sound)
     new_node = Node.new(sound)
     if @head.nil?
@@ -49,8 +63,5 @@ class LinkedList
 
   def to_string
     analyze(String.new)
-  end
-
-  def insert(place, sound)
   end
 end

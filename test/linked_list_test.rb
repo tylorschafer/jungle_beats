@@ -24,12 +24,11 @@ class LinkedListTest < Minitest::Test
   def test_append
     @list.append("doop")
 
-    assert "doop", @list.head
     assert_nil @list.head.next_node
 
     @list.append("deep")
 
-    assert "doop", @list.head.next_node
+    assert "deep", @list.head.next_node
   end
 
   def test_count
@@ -45,7 +44,7 @@ class LinkedListTest < Minitest::Test
   def test_to_string
     @list.append("doop")
 
-    assert "doop", @list.to_string
+    assert_equal "doop ", @list.to_string
 
     @list.append("deep")
 
@@ -57,14 +56,12 @@ class LinkedListTest < Minitest::Test
   end
 
   def test_insert
-    skip
     @list.append("doop")
     @list.append("deep")
     @list.append("bop")
     @list.append("bleep")
-    binding.pry
     @list.insert(1, "blat")
 
-    assert "doop blat deep", @list.to_string
+    assert_equal "doop blat deep bop bleep ", @list.to_string
   end
 end
