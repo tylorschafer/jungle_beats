@@ -3,31 +3,39 @@ require 'pry'
 
 class LinkedList
 
-  attr_reader :list_contents, :head, :next_node
+  attr_reader :contents
 
   def initialize
-    @list_contents = []
+    @contents = []
   end
 
   def head
-    @list_contents[0]
+    @contents[0]
   end
 
   def append(sound)
-    if @list_contents.empty? || @list_contents.count.odd?
-      @list_contents << Node.new(sound)
+    if @contents.empty?
+      @contents << Node.new(sound)
     else
-      @list_contents.last.next_node << Node.new(sound)
+      @contents.last.next << Node.new(sound)
     end
   end
 
   def count
-    @list_contents.count
+    count = 0
+    @contents.each do |node|
+      count += 1
+    end
+    count
   end
 
   def to_string
-    @list_contents.map do |node|
+    @contents.map do |node|
       node.data.to_s
     end.join(" ")
+  end
+
+  def insert(place, sound)
+    @contents.insert()
   end
 end

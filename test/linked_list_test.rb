@@ -36,6 +36,10 @@ class LinkedListTest < Minitest::Test
     @list.append("doop")
 
     assert 1, @list.count
+
+    @list.append("deep")
+
+    assert 2, @list.count
   end
 
   def test_to_string
@@ -46,5 +50,9 @@ class LinkedListTest < Minitest::Test
     @list.append("deep")
 
     assert "doop deep", @list.to_string
+
+    @list.append("beep")
+
+    assert "doop deep beep", @list.to_string
   end
 end
