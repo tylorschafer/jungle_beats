@@ -24,6 +24,6 @@ class LinkedList
   def to_string
     @list_contents.map do |node|
       node.data.to_s
-    end
+    end.join(" ")
   end
 end

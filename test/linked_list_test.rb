@@ -13,8 +13,12 @@ class LinkedListTest < Minitest::Test
     assert_instance_of LinkedList, @list
   end
 
-  def test_attributes
+  def test_head
     assert_nil @list.head
+
+    @list.append("doop")
+
+    assert_instance_of Node, @list.head
   end
 
   def test_append
@@ -32,6 +36,8 @@ class LinkedListTest < Minitest::Test
 
   def test_to_string
     @list.append("doop")
+
+    binding.pry
 
     assert "doop", @list.to_string
   end
