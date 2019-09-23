@@ -10,25 +10,30 @@ class LinkedList
   end
 
   def prepend(sound)
-    new_node = Node.new(sound)
-    if @head.nil?
-      @head = new_node
-    else
-      new_node.next_node = @head
-      @head = new_node
-    end
+    find_placement('prepend', sound)
   end
 
   def append(sound)
+    find_placement('append', sound)
+  end
+
+  def find_placement(type, sound)
     new_node = Node.new(sound)
     if @head.nil?
       @head = new_node
+    elsif type == 'prepend'
+      place_head(new_node)
     else
-      place_open_slot(new_node)
+      place_next_open_slot(new_node)
     end
   end
 
-  def place_open_slot(new_node)
+  def place_head(new_node)
+    new_node.next_node = @head
+    @head = new_node
+  end
+
+  def place_next_open_slot(new_node)
     current = @head
     until forward(current).nil?
       current = forward(current)
