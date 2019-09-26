@@ -73,4 +73,15 @@ class LinkedListTest < Minitest::Test
 
     assert_equal "bleep doop deep bop ", @list.to_string
   end
+
+  def test_find
+    @list.append("deep")
+    @list.append("woo")
+    @list.append("shi")
+    @list.prepend("shu")
+    @list.prepend("blop")
+
+    assert_equal "shi", @list.find(2, 1)
+    assert_equal "woo shi shu", @list.find(1, 3)
+  end
 end
