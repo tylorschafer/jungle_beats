@@ -80,17 +80,31 @@ class LinkedList
     analyze(String.new)
   end
 
+  def string_elements
+    to_string.split(" ")
+  end
+
   def find(index, size)
-    string_elements = to_string.split(" ")
+    list = string_elements
     if size == 1
-      string_elements[index]
+      list[index]
     else
       ending_index = index + (size - 1)
-      string_elements[index..ending_index].join(" ")
+      list[index..ending_index].join(" ")
     end
   end
 
   def includes?(node)
     to_string.include?(node)
+  end
+
+  def pop
+    current = @head
+    until current.next_node == nil
+      current = forward(current)
+    end
+    removed_node = current.data
+    current.data = nil
+    removed_node
   end
 end
