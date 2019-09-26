@@ -89,4 +89,8 @@ class LinkedList
       string_elements[index..ending_index].join(" ")
     end
   end
+
+  def includes?(node)
+    to_string.include?(node)
+  end
 end
