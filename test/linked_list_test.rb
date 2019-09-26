@@ -78,8 +78,8 @@ class LinkedListTest < Minitest::Test
     @list.append("deep")
     @list.append("woo")
     @list.append("shi")
-    @list.prepend("shu")
-    @list.prepend("blop")
+    @list.append("shu")
+    @list.append("blop")
 
     assert_equal "shi", @list.find(2, 1)
     assert_equal "woo shi shu", @list.find(1, 3)

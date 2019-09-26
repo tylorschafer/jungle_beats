@@ -79,4 +79,14 @@ class LinkedList
   def to_string
     analyze(String.new)
   end
+
+  def find(index, size)
+    string_elements = to_string.split(" ")
+    if size == 1
+      string_elements[index]
+    else
+      ending_index = index + (size - 1)
+      string_elements[index..ending_index].join(" ")
+    end
+  end
 end
