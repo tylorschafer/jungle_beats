@@ -79,4 +79,32 @@ class LinkedList
   def to_string
     analyze(String.new)
   end
+
+  def string_elements
+    to_string.split(" ")
+  end
+
+  def find(index, size)
+    list = string_elements
+    if size == 1
+      list[index]
+    else
+      ending_index = index + (size - 1)
+      list[index..ending_index].join(" ")
+    end
+  end
+
+  def includes?(node)
+    to_string.include?(node)
+  end
+
+  # def pop
+  #   current = @head
+  #   until current.next_node == nil
+  #     current = forward(current)
+  #   end
+  #   removed_node = current.data
+  #   current.data = nil
+  #   removed_node
+  # end
 end
