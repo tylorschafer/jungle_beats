@@ -98,13 +98,13 @@ class LinkedList
     to_string.include?(node)
   end
 
-  def pop
-    current = @head
-    until current.next_node == nil
-      current = forward(current)
-    end
-    removed_node = current.data
-    current.data = nil
-    removed_node
-  end
+  # def pop
+  #   current = @head
+  #   until current.next_node == nil
+  #     current = forward(current)
+  #   end
+  #   removed_node = current.data
+  #   current.data = nil
+  #   removed_node
+  # end
 end
